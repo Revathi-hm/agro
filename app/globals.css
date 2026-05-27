@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── shadcn CSS variables ── */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 1rem;
+  }
+}
+
+/* ── Brand Design Tokens ── */
+:root {
+  --primary-brand:  #125426;
+  --primary-dk:     #0d3a1c;
+  --olive:          #5D6B36;
+  --olive-lt:       #858367;
+  --ivory:          #F3EEE9;
+  --card-white:     #FDFDFD;
+  --beige:          #D2D0C9;
+  --earth:          #AAA896;
+  --text-dark:      #2F2913;
+  --muted-brand:    #6B6B5A;
+  --border-brand:   rgba(210,208,201,0.65);
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-inter), var(--font-jakarta), system-ui, sans-serif;
+  background: var(--ivory);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ivory); }
+::-webkit-scrollbar-thumb { background: var(--primary-brand); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-dk); }
+
+/* ── Text gradient (olive accent) ── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--olive) 0%, var(--olive-lt) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C8963E 0%, #D4A843 50%, #C8963E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--olive);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--olive), transparent);
+  flex-shrink: 0;
+}
+
+/* ── Tag pill ── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(.22,.61,.36,1),
+              transform 0.75s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── Animated underline ── */
+.animated-underline { position: relative; }
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--primary-brand);
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after { width: 100%; }
+
+/* ── Glass effects ── */
+.glass {
+  background: rgba(243,238,233,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(210,208,201,0.5);
+}
+.glass-dark {
+  background: rgba(18,84,38,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(93,107,54,0.3);
+}
+
+/* ── Form input ── */
+.form-input {
+  width: 100%;
+  background: var(--ivory);
+  border: 1.5px solid rgba(210,208,201,0.7);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-brand);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(18,84,38,0.09);
+}
+.form-input::placeholder { color: #9ca3af; }
+
+/* ── Noise texture overlay ── */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Shimmer ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ── Use tags ── */
+.use-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.use-tag {
+  background: rgba(93,107,54,0.08);
+  color: var(--olive);
+  font-size: 0.73rem;
+  font-weight: 500;
+  padding: 0.3rem 0.9rem;
+  border-radius: 50px;
+  border: 1px solid rgba(93,107,54,0.18);
+}
+
+/* ── Marquee ── */
+.marquee-track { animation: marquee 32s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ── Newsletter form ── */
+.newsletter-form {
+  display: flex;
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+}
+.newsletter-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.83rem;
+  padding: 0.7rem 1.25rem;
+  outline: none;
+}
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.38); }
+.newsletter-form button {
+  background: var(--olive);
+  border: none;
+  color: #fff;
+  padding: 0.7rem 1.25rem;
+  cursor: pointer;
+  transition: background 0.25s;
+  flex-shrink: 0;
+}
+.newsletter-form button:hover { background: var(--primary-brand); }
