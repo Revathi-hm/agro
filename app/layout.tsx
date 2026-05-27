@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter, Cormorant_Garamond } from 'next/font/google'
+import { Playfair_Display, Inter, Cormorant_Garamond, Montserrat } from 'next/font/google'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -24,16 +24,23 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 })
 
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  weight: ['300', '400', '500', '600'],
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Kalpa Ruchi | Premium Coconut Products',
+  title: 'Dhanalakshmi Agro Products | Premium Coconut Products',
   description:
     'Premium quality coconut-derived products — desiccated, cold-pressed, and refined from the finest coconut groves. Pure, natural, and wholesome since 2007.',
-  keywords: ['desiccated coconut', 'virgin coconut oil', 'coconut milk powder', 'Kalpa Ruchi', 'Natural Goodness', 'agro products', 'India export'],
+  keywords: ['desiccated coconut', 'virgin coconut oil', 'coconut milk powder', 'Dhanalakshmi Agro Products', 'agro products', 'India export'],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} ${cormorant.variable} ${montserrat.variable}`}>
       <body className="font-inter antialiased bg-ivory text-text-dark">{children}</body>
     </html>
   )
