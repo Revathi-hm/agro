@@ -13,25 +13,9 @@ const navLinks = [
   { label: 'Why Us',   href: '/#why-us'  },
 ]
 
-/* ─── Leaf-ornament A ────────────────────────────────────────────
-   w-[0.9em] container + em-unit leaf means it scales automatically
-   with whatever font-size the parent sets — no px math needed.
-──────────────────────────────────────────────────────────────── */
-function LeafA() {
-  return (
-    <span className="relative inline-flex items-center justify-center w-[0.9em]">
-      A
-      <span
-        className="absolute w-[0.16em] h-[0.28em] bg-[#6B8A3F] rounded-[100%_0%_100%_0%] rotate-[-45deg] top-[54%] left-1/2 -translate-x-1/2 -translate-y-1/2"
-        aria-hidden="true"
-      />
-    </span>
-  )
-}
-
 /* ─── Brand mark ─────────────────────────────────────────────────
-   DHANALAKSHMI  (Cormorant Garamond, #6B7F3A)
-   AGRO PRODUCTS (Montserrat, #8B5E34)
+   DHANALAKSHMI  (Cormorant Garamond, #5E7333)
+   AGRO PRODUCTS (Montserrat, #7A5230)
 ──────────────────────────────────────────────────────────────── */
 function BrandMark({ size = 'md' }: { size?: 'sm' | 'md' }) {
   const titleSize = size === 'sm' ? '1.3rem' : '1.5rem'
@@ -39,18 +23,15 @@ function BrandMark({ size = 'md' }: { size?: 'sm' | 'md' }) {
 
   return (
     <div className="flex flex-col leading-none select-none">
-      {/* DHANALAKSHMI — leaf A ornaments scale via em units */}
       <span
-        className="font-cormorant font-medium uppercase leading-none whitespace-nowrap flex items-end"
-        style={{ fontSize: titleSize, color: '#6B7F3A', letterSpacing: '0.08em' }}
+        className="font-cormorant font-medium uppercase leading-none whitespace-nowrap"
+        style={{ fontSize: titleSize, color: '#5E7333', letterSpacing: '0.08em' }}
       >
-        DH<LeafA />N<LeafA />LAKSHMI
+        Dhanalakshmi
       </span>
-
-      {/* AGRO PRODUCTS */}
       <span
         className="font-montserrat font-medium uppercase whitespace-nowrap mt-1"
-        style={{ fontSize: subSize, color: '#8B5E34', letterSpacing: '0.42em' }}
+        style={{ fontSize: subSize, color: '#7A5230', letterSpacing: '0.42em' }}
       >
         Agro Products
       </span>
