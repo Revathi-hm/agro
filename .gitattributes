@@ -1,0 +1,9 @@
+# Tell GitHub Linguist the correct languages
+*.tsx linguist-language=TypeScript
+*.ts  linguist-language=TypeScript
+*.css linguist-language=CSS
+
+# Exclude generated / vendor files from language stats
+package-lock.json    linguist-generated=true
+tsconfig.tsbuildinfo linguist-generated=true
+next-env.d.ts        linguist-generated=true
