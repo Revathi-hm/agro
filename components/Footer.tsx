@@ -5,20 +5,20 @@ import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone, ArrowRight } from 'lucide-react'
 
 const quickLinks = [
-  { label: 'About Us',    href: '/about'    },
-  { label: 'Products',    href: '/products' },
-  { label: 'Our Process', href: '/#process' },
-  { label: 'Why Us',      href: '/#why-us'  },
-  { label: 'Contact',     href: '/contact'  },
+  { label: 'About Us',    href: '/#about'    },
+  { label: 'Products',    href: '/#products' },
+  { label: 'Our Process', href: '/#process'  },
+  { label: 'Why Us',      href: '/#why-us'   },
+  { label: 'Contact',     href: '/#contact'  },
 ]
 
 const productLinks = [
-  { label: 'Desiccated Coconut Powder', href: '/products/desiccated-coconut-powder' },
-  { label: 'Desiccated Coconut Flakes', href: '/products/desiccated-coconut-flakes' },
-  { label: 'Virgin Coconut Oil',         href: '/products/virgin-coconut-oil'        },
-  { label: 'Coconut Milk',               href: '/products/coconut-milk'              },
-  { label: 'D-Fat Coconut Powder',        href: '/products/d-fat-coconut-powder'      },
-  { label: 'Coconut Milk Powder',         href: '/products/coconut-milk-powder'       },
+  { label: 'Desiccated Coconut Powder', href: '/#products' },
+  { label: 'Desiccated Coconut Flakes', href: '/#products' },
+  { label: 'Virgin Coconut Oil',         href: '/#products' },
+  { label: 'Coconut Milk',               href: '/#products' },
+  { label: 'D-Fat Coconut Powder',        href: '/#products' },
+  { label: 'Coconut Milk Powder',         href: '/#products' },
 ]
 
 export default function Footer() {

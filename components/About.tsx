@@ -96,7 +96,7 @@ export default function About() {
             </div>
 
             <motion.a
-              href="/about"
+              href="/#about"
               whileHover={{ x: 4 }}
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-forest-dark to-forest text-white font-bold rounded-full shadow-glow-green hover:shadow-none transition-all duration-300"
             >

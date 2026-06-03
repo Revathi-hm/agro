@@ -7,10 +7,10 @@ import { Menu } from 'lucide-react'
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from '@/components/ui/sheet'
 
 const navLinks = [
-  { label: 'About',    href: '/about'    },
-  { label: 'Products', href: '/products' },
-  { label: 'Process',  href: '/#process' },
-  { label: 'Why Us',   href: '/#why-us'  },
+  { label: 'About',    href: '/#about'    },
+  { label: 'Products', href: '/#products' },
+  { label: 'Process',  href: '/#process'  },
+  { label: 'Why Us',   href: '/#why-us'   },
 ]
 
 /* ─── Brand mark ─────────────────────────────────────────────────
@@ -87,7 +87,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/#contact"
             className="ml-4 px-5 py-2.5 bg-gradient-to-r from-forest to-olive text-white text-[0.82rem] font-bold rounded-full hover:shadow-glow-green hover:-translate-y-0.5 transition-all duration-300"
           >
             Contact Us
@@ -123,7 +123,7 @@ export default function Navbar() {
                 ))}
                 <SheetClose asChild>
                   <Link
-                    href="/contact"
+                    href="/#contact"
                     className="mt-4 px-6 py-3 bg-gradient-to-r from-forest to-olive text-white font-bold rounded-full text-center"
                   >
                     Contact Us

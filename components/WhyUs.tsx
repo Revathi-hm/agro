@@ -46,10 +46,10 @@ export default function WhyUs() {
                 With over 15 years of expertise in coconut processing, Kalpa Ruchi has built a reputation for consistency, transparency, and exceptional product quality.
               </p>
               <div className="flex flex-wrap gap-3 mb-10">
-                <a href="/products" className="px-7 py-3.5 bg-gradient-to-r from-forest to-olive text-white font-bold rounded-full hover:shadow-glow-green transition-all duration-300 hover:-translate-y-0.5 text-sm">
+                <a href="/#products" className="px-7 py-3.5 bg-gradient-to-r from-forest to-olive text-white font-bold rounded-full hover:shadow-glow-green transition-all duration-300 hover:-translate-y-0.5 text-sm">
                   Explore Our Products
                 </a>
-                <a href="/about" className="px-7 py-3.5 border-2 border-forest/25 text-forest font-bold rounded-full hover:bg-forest/5 transition-all duration-300 text-sm">
+                <a href="/#about" className="px-7 py-3.5 border-2 border-forest/25 text-forest font-bold rounded-full hover:bg-forest/5 transition-all duration-300 text-sm">
                   Our Story
                 </a>
               </div>

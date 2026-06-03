@@ -175,7 +175,7 @@ export default function Products() {
 
         <div className="text-center mt-12">
           <a
-            href="/products"
+            href="/#products"
             className="inline-flex items-center gap-2 px-8 py-3.5 font-bold text-sm text-white rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-green"
             style={{ background: 'linear-gradient(135deg, #0d3a1c 0%, #125426 100%)' }}
           >
