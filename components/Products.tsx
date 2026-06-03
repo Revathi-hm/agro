@@ -95,11 +95,11 @@ function ProductModal({ product, open, onClose }: { product: Product | null; ope
               ))}
             </div>
             <a
-              href={`/products/${product.slug}`}
+              href="/#contact"
               className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-green"
               style={{ background: 'linear-gradient(135deg, #125426 0%, #5D6B36 100%)' }}
             >
-              Full Details <ArrowRight className="w-4 h-4" />
+              Enquire Now <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
