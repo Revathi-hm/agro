@@ -60,9 +60,16 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void
 }
 
 function ProductModal({ product, open, onClose }: { product: Product | null; open: boolean; onClose: () => void }) {
+  const [showDetails, setShowDetails] = useState(false)
+
+  // Reset expanded state whenever modal opens a new product
+  const handleChange = (v: boolean) => {
+    if (!v) { onClose(); setShowDetails(false) }
+  }
+
   if (!product) return null
   return (
-    <Dialog open={open} onOpenChange={(v) => { if (!v) onClose() }}>
+    <Dialog open={open} onOpenChange={handleChange}>
       <DialogContent className="max-w-2xl p-0 overflow-hidden rounded-2xl">
         <DialogClose asChild>
           <button
@@ -73,6 +80,7 @@ function ProductModal({ product, open, onClose }: { product: Product | null; ope
           </button>
         </DialogClose>
         <div className="flex flex-col sm:flex-row">
+          {/* Image panel */}
           <div className="sm:w-[45%] bg-ivory flex items-center justify-center p-8 min-h-[220px]">
             <Image
               src={product.modalImage || product.image}
@@ -82,10 +90,13 @@ function ProductModal({ product, open, onClose }: { product: Product | null; ope
               className="object-contain w-full"
             />
           </div>
+
+          {/* Info panel */}
           <div className="sm:w-[55%] p-7 overflow-y-auto max-h-[80vh]">
             <p className="text-[0.65rem] font-bold tracking-[0.15em] uppercase text-olive mb-2">{product.badge}</p>
             <h2 className="font-playfair text-2xl font-bold text-text-dark mb-3 leading-tight">{product.name}</h2>
             <p className="text-[0.85rem] text-muted leading-relaxed mb-5">{product.longDesc}</p>
+
             <p className="text-[0.7rem] font-bold tracking-widest uppercase text-olive mb-2">Applications</p>
             <div className="flex flex-wrap gap-1.5 mb-6">
               {product.uses.map((u) => (
@@ -94,13 +105,48 @@ function ProductModal({ product, open, onClose }: { product: Product | null; ope
                 </span>
               ))}
             </div>
-            <a
-              href="/#contact"
+
+            {/* Expanded detail section */}
+            {showDetails && (
+              <div className="mb-6 space-y-5">
+                {/* Specs table */}
+                <div>
+                  <p className="text-[0.7rem] font-bold tracking-widest uppercase text-olive mb-2">Specifications</p>
+                  <table className="w-full text-[0.78rem] border-collapse">
+                    <tbody>
+                      {product.specs.map((s) => (
+                        <tr key={s.label} className="border-b border-beige/60 last:border-0">
+                          <td className="py-1.5 pr-3 font-semibold text-text-dark w-2/5">{s.label}</td>
+                          <td className="py-1.5 text-muted">{s.value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Grades */}
+                {product.grades.length > 0 && (
+                  <div>
+                    <p className="text-[0.7rem] font-bold tracking-widest uppercase text-olive mb-2">Available Grades</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {product.grades.map((g) => (
+                        <span key={g} className="text-[0.72rem] font-medium px-2.5 py-1 rounded-full bg-olive/10 text-olive border border-olive/20">
+                          {g}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <button
+              onClick={() => setShowDetails((v) => !v)}
               className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-green"
               style={{ background: 'linear-gradient(135deg, #125426 0%, #5D6B36 100%)' }}
             >
-              Enquire Now <ArrowRight className="w-4 h-4" />
-            </a>
+              {showDetails ? 'Hide Details' : 'Full Details'} <ArrowRight className={`w-4 h-4 transition-transform duration-200 ${showDetails ? 'rotate-90' : ''}`} />
+            </button>
           </div>
         </div>
       </DialogContent>
