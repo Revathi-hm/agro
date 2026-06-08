@@ -2,8 +2,8 @@
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowRight, X } from 'lucide-react'
-import { Dialog, DialogContent, DialogClose } from '@/components/ui/dialog'
+import { ArrowRight } from 'lucide-react'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { products, type Product } from '@/data/products'
 
 const filters = [
@@ -71,14 +71,6 @@ function ProductModal({ product, open, onClose }: { product: Product | null; ope
   return (
     <Dialog open={open} onOpenChange={handleChange}>
       <DialogContent className="max-w-2xl p-0 overflow-hidden rounded-2xl">
-        <DialogClose asChild>
-          <button
-            className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm hover:bg-white transition-colors"
-            aria-label="Close"
-          >
-            <X className="w-4 h-4 text-text-dark" />
-          </button>
-        </DialogClose>
         <div className="flex flex-col sm:flex-row">
           {/* Image panel */}
           <div className="sm:w-[45%] bg-ivory flex items-center justify-center p-8 min-h-[220px]">
