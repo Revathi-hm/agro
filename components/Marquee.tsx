@@ -15,10 +15,11 @@ const items = [
 
 export default function Marquee() {
   const trackRef = useRef<HTMLDivElement>(null)
+  const tweenRef = useRef<gsap.core.Tween | null>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(trackRef.current, {
+      tweenRef.current = gsap.to(trackRef.current, {
         xPercent: -50,
         ease: 'none',
         duration: 28,
@@ -33,8 +34,8 @@ export default function Marquee() {
   return (
     <div
       className="bg-forest border-y border-white/10 py-3.5 overflow-hidden"
-      onMouseEnter={() => gsap.globalTimeline.pause()}
-      onMouseLeave={() => gsap.globalTimeline.resume()}
+      onMouseEnter={() => tweenRef.current?.pause()}
+      onMouseLeave={() => tweenRef.current?.resume()}
     >
       <div ref={trackRef} className="flex whitespace-nowrap w-max">
         {doubled.map((item, i) => (

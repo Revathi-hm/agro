@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
@@ -62,7 +62,9 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void
 function ProductModal({ product, open, onClose }: { product: Product | null; open: boolean; onClose: () => void }) {
   const [showDetails, setShowDetails] = useState(false)
 
-  // Reset expanded state whenever modal opens a new product
+  // Reset expanded state whenever a different product is opened
+  useEffect(() => { setShowDetails(false) }, [product?.id])
+
   const handleChange = (v: boolean) => {
     if (!v) { onClose(); setShowDetails(false) }
   }

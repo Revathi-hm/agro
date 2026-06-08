@@ -96,11 +96,11 @@ export default function About() {
             </div>
 
             <motion.a
-              href="/#about"
+              href="/#contact"
               whileHover={{ x: 4 }}
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-forest-dark to-forest text-white font-bold rounded-full shadow-glow-green hover:shadow-none transition-all duration-300"
             >
-              Our Full Story
+              Get In Touch
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
