@@ -2,9 +2,6 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import PageHero from '@/components/PageHero'
 import About from '@/components/About'
-import Stats from '@/components/Stats'
-import Certifications from '@/components/Certifications'
-import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
@@ -31,9 +28,6 @@ export default function AboutPage() {
         imageFit="contain"
       />
       <About />
-      <Stats />
-      <Certifications />
-      <Contact />
       <Footer />
     </>
   )
