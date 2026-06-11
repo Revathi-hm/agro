@@ -1,6 +1,7 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
@@ -60,18 +61,9 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void
 }
 
 function ProductModal({ product, open, onClose }: { product: Product | null; open: boolean; onClose: () => void }) {
-  const [showDetails, setShowDetails] = useState(false)
-
-  // Reset expanded state whenever a different product is opened
-  useEffect(() => { setShowDetails(false) }, [product?.id])
-
-  const handleChange = (v: boolean) => {
-    if (!v) { onClose(); setShowDetails(false) }
-  }
-
   if (!product) return null
   return (
-    <Dialog open={open} onOpenChange={handleChange}>
+    <Dialog open={open} onOpenChange={(v) => { if (!v) onClose() }}>
       <DialogContent className="max-w-2xl p-0 overflow-hidden rounded-2xl">
         <div className="flex flex-col sm:flex-row">
           {/* Image panel */}
@@ -100,47 +92,13 @@ function ProductModal({ product, open, onClose }: { product: Product | null; ope
               ))}
             </div>
 
-            {/* Expanded detail section */}
-            {showDetails && (
-              <div className="mb-6 space-y-5">
-                {/* Specs table */}
-                <div>
-                  <p className="text-[0.7rem] font-bold tracking-widest uppercase text-olive mb-2">Specifications</p>
-                  <table className="w-full text-[0.78rem] border-collapse">
-                    <tbody>
-                      {product.specs.map((s) => (
-                        <tr key={s.label} className="border-b border-beige/60 last:border-0">
-                          <td className="py-1.5 pr-3 font-semibold text-text-dark w-2/5">{s.label}</td>
-                          <td className="py-1.5 text-muted">{s.value}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* Grades */}
-                {product.grades.length > 0 && (
-                  <div>
-                    <p className="text-[0.7rem] font-bold tracking-widest uppercase text-olive mb-2">Available Grades</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {product.grades.map((g) => (
-                        <span key={g} className="text-[0.72rem] font-medium px-2.5 py-1 rounded-full bg-olive/10 text-olive border border-olive/20">
-                          {g}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            <button
-              onClick={() => setShowDetails((v) => !v)}
+            <Link
+              href={`/products/${product.slug}`}
               className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-green"
               style={{ background: 'linear-gradient(135deg, #125426 0%, #5D6B36 100%)' }}
             >
-              {showDetails ? 'Hide Details' : 'Full Details'} <ArrowRight className={`w-4 h-4 transition-transform duration-200 ${showDetails ? 'rotate-90' : ''}`} />
-            </button>
+              Full Details <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </DialogContent>
