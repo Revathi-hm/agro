@@ -27,6 +27,8 @@ export default function AboutPage() {
         title="Rooted in Tradition, Driven by Purity"
         description="Founded in 2007, we've grown from a family operation into a globally trusted name in premium coconut processing."
         breadcrumb="About Us"
+        image="/images/kalparuchi-pouch.png"
+        imageFit="contain"
       />
       <About />
       <Stats />

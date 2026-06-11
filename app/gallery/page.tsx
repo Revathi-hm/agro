@@ -23,6 +23,8 @@ export default function GalleryPage() {
         title="Our Products & Facility"
         description="A closer look at our premium coconut products, packaging, and production standards."
         breadcrumb="Gallery"
+        image="/images/hero.jpg"
+        imageFit="cover"
       />
       <GalleryGrid />
       <Footer />

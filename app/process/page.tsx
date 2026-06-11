@@ -26,6 +26,8 @@ export default function ProcessPage() {
         title="From Grove to Global Markets"
         description="A five-step journey that guarantees purity in every packet — sourced, processed, and packaged to the highest standards."
         breadcrumb="Our Process"
+        image="/images/virgin-coconut-oil.jpg"
+        imageFit="cover"
       />
       <Process />
       <WhyUs />
