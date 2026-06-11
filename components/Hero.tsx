@@ -89,7 +89,7 @@ export default function Hero() {
 
           <div ref={actionsRef} className="flex flex-wrap gap-3">
             <a
-              href="#products"
+              href="/products"
               className="inline-flex items-center gap-2 px-9 py-3.5 font-semibold text-sm rounded-full text-white transition-all duration-300 hover:-translate-y-0.5"
               style={{
                 background: 'linear-gradient(135deg, #125426 0%, #5D6B36 100%)',
@@ -102,7 +102,7 @@ export default function Hero() {
               </svg>
             </a>
             <a
-              href="#about"
+              href="/about"
               className="px-9 py-3.5 font-medium text-sm rounded-full transition-all duration-300 hover:bg-forest/5"
               style={{
                 color: '#125426',

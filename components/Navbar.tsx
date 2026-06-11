@@ -2,15 +2,17 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Menu } from 'lucide-react'
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from '@/components/ui/sheet'
 
 const navLinks = [
-  { label: 'About',    href: '/#about'    },
-  { label: 'Products', href: '/#products' },
-  { label: 'Process',  href: '/#process'  },
-  { label: 'Why Us',   href: '/#why-us'   },
+  { label: 'About',    href: '/about'    },
+  { label: 'Products', href: '/products' },
+  { label: 'Process',  href: '/process'  },
+  { label: 'Why Us',   href: '/why-us'   },
+  { label: 'Gallery',  href: '/gallery'  },
 ]
 
 /* ─── Brand mark ─────────────────────────────────────────────────
@@ -42,6 +44,7 @@ function BrandMark({ size = 'md' }: { size?: 'sm' | 'md' }) {
 /* ─── Navbar ─────────────────────────────────────────────────── */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -81,7 +84,9 @@ export default function Navbar() {
             <Link
               key={l.label}
               href={l.href}
-              className="text-[0.88rem] font-semibold text-text-dark hover:text-forest animated-underline transition-colors"
+              className={`text-[0.88rem] font-semibold animated-underline transition-colors ${
+                pathname === l.href ? 'text-forest font-bold' : 'text-text-dark hover:text-forest'
+              }`}
             >
               {l.label}
             </Link>

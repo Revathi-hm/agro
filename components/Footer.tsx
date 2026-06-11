@@ -5,11 +5,12 @@ import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone, ArrowRight } from 'lucide-react'
 
 const quickLinks = [
-  { label: 'About Us',    href: '/#about'    },
-  { label: 'Products',    href: '/#products' },
-  { label: 'Our Process', href: '/#process'  },
-  { label: 'Why Us',      href: '/#why-us'   },
-  { label: 'Contact',     href: '/#contact'  },
+  { label: 'About Us',    href: '/about'    },
+  { label: 'Products',    href: '/products' },
+  { label: 'Our Process', href: '/process'  },
+  { label: 'Why Us',      href: '/why-us'   },
+  { label: 'Gallery',     href: '/gallery'  },
+  { label: 'Contact',     href: '/#contact' },
 ]
 
 const productLinks = [
