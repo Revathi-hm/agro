@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     description: 'Export-grade desiccated coconut, virgin coconut oil, coconut milk and more from South India.',
     url: 'https://dhanalakshmiagroproducts.com/products',
   },
+  alternates: { canonical: 'https://dhanalakshmiagroproducts.com/products' },
 }
 
 export default function ProductsPage() {

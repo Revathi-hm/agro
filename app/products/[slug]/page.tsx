@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChevronRight, ArrowRight, Send } from 'lucide-react'
+import { ChevronRight, ArrowRight, Send, CheckCircle } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { products, getProductBySlug } from '@/data/products'
@@ -19,11 +19,14 @@ export async function generateMetadata(
   return {
     title: product.name,
     description: product.longDesc,
-    keywords: [product.name, 'coconut products India', 'Dhanalakshmi Agro Products', product.badge, 'Kalpa Ruchi'],
+    keywords: [product.name, 'coconut products India', 'Dhanalakshmi Agro Products', product.badge, 'Kalpa Ruchi', 'export grade coconut Karnataka'],
     openGraph: {
       title: `${product.name} | Dhanalakshmi Agro Products`,
       description: product.longDesc,
       url: `https://dhanalakshmiagroproducts.com/products/${product.slug}`,
+    },
+    alternates: {
+      canonical: `https://dhanalakshmiagroproducts.com/products/${product.slug}`,
     },
   }
 }
@@ -100,6 +103,21 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                 </div>
               </div>
 
+              {/* Key Features (if present) */}
+              {p.keyFeatures && p.keyFeatures.length > 0 && (
+                <div>
+                  <p className="text-[0.68rem] font-bold tracking-widest uppercase text-olive mb-3">Key Features</p>
+                  <div className="flex flex-col gap-2">
+                    {p.keyFeatures.map((f) => (
+                      <div key={f} className="flex items-center gap-2 text-sm text-text-dark">
+                        <CheckCircle className="w-4 h-4 flex-shrink-0 text-forest" />
+                        {f}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Specs */}
               <div className="bg-card-white rounded-2xl border border-beige/60 overflow-hidden">
                 <div className="px-5 py-3 border-b border-beige/60">
@@ -155,8 +173,79 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
         </div>
       </section>
 
+      {/* ── What is [Product]? ── */}
+      {p.whatIs && (
+        <section className="py-14 bg-card-white border-t border-beige/40">
+          <div className="max-w-4xl mx-auto px-6 lg:px-10">
+            <p className="text-[0.68rem] font-bold tracking-widest uppercase text-olive mb-3">Overview</p>
+            <h2 className="font-playfair text-3xl font-bold text-text-dark mb-5">
+              What is {p.name}?
+            </h2>
+            <p className="text-muted leading-[1.85] text-[0.97rem]">{p.whatIs}</p>
+          </div>
+        </section>
+      )}
+
+      {/* ── How is it Made ── */}
+      {p.howMade && p.howMade.length > 0 && (
+        <section className="py-14 bg-ivory border-t border-beige/40">
+          <div className="max-w-4xl mx-auto px-6 lg:px-10">
+            <p className="text-[0.68rem] font-bold tracking-widest uppercase text-olive mb-3">Process</p>
+            <h2 className="font-playfair text-3xl font-bold text-text-dark mb-8">
+              How is {p.name} Made?
+            </h2>
+            <ol className="flex flex-col gap-4">
+              {p.howMade.map((step, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span
+                    className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-[0.72rem] font-bold text-white"
+                    style={{ background: 'linear-gradient(135deg, #125426 0%, #5D6B36 100%)' }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p className="text-[0.93rem] text-muted leading-relaxed pt-1">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {/* ── Nutritional Facts ── */}
+      {p.nutritionFacts && p.nutritionFacts.length > 0 && (
+        <section className="py-14 bg-card-white border-t border-beige/40">
+          <div className="max-w-4xl mx-auto px-6 lg:px-10">
+            <p className="text-[0.68rem] font-bold tracking-widest uppercase text-olive mb-3">Nutrition</p>
+            <h2 className="font-playfair text-3xl font-bold text-text-dark mb-6">
+              Nutritional Facts
+            </h2>
+            <div className="bg-ivory rounded-2xl border border-beige/60 overflow-hidden">
+              <div className="px-6 py-3 border-b border-beige/60 bg-forest/5">
+                <p className="text-[0.72rem] font-bold tracking-widest uppercase text-olive">Per 100g (approximate)</p>
+              </div>
+              <table className="w-full">
+                <tbody>
+                  {p.nutritionFacts.map((row, i) => (
+                    <tr
+                      key={row.label}
+                      className={i < p.nutritionFacts.length - 1 ? 'border-b border-beige/40' : ''}
+                    >
+                      <td className="px-6 py-3.5 text-sm font-semibold text-text-dark w-2/5">{row.label}</td>
+                      <td className="px-6 py-3.5 text-sm text-muted">{row.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-[0.72rem] text-muted mt-3 italic">
+              * Values are approximate and may vary by grade and batch. Full test reports available on request.
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* ── Related Products ── */}
-      <section className="py-16 bg-card-white border-t border-beige/40">
+      <section className="py-16 bg-ivory border-t border-beige/40">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between mb-10">
             <div>

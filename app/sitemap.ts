@@ -1,12 +1,26 @@
 import { MetadataRoute } from 'next'
+import { products } from '@/data/products'
+
+const BASE = 'https://dhanalakshmiagroproducts.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const productPages: MetadataRoute.Sitemap = products.map((p) => ({
+    url: `${BASE}/products/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }))
+
   return [
-    { url: 'https://dhanalakshmiagroproducts.com',          lastModified: new Date(), changeFrequency: 'monthly', priority: 1   },
-    { url: 'https://dhanalakshmiagroproducts.com/about',    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: 'https://dhanalakshmiagroproducts.com/products', lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.9 },
-    { url: 'https://dhanalakshmiagroproducts.com/process',  lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://dhanalakshmiagroproducts.com/why-us',   lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://dhanalakshmiagroproducts.com/gallery',  lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    // Core pages
+    { url: BASE,                   lastModified: new Date(), changeFrequency: 'monthly', priority: 1.0 },
+    { url: `${BASE}/products`,     lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.95 },
+    { url: `${BASE}/about`,        lastModified: new Date(), changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${BASE}/why-us`,       lastModified: new Date(), changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${BASE}/process`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.70 },
+    { url: `${BASE}/gallery`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.65 },
+
+    // All 8 product detail pages
+    ...productPages,
   ]
 }

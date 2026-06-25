@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               },
               "geo": { "@type": "GeoCoordinates", "latitude": "13.2628", "longitude": "76.4795" },
               "telephone": "+919844151267",
-              "email": "info@dhanalakshmiagroprodcuts.com",
+              "email": "info@dhanalakshmiagroproducts.com",
               "foundingDate": "2007",
               "priceRange": "$$",
               "openingHours": "Mo-Sa 09:00-18:00",

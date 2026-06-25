@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: 'Premium coconut products crafted with purity since 2007 — Tiptur, Karnataka.',
     url: 'https://dhanalakshmiagroproducts.com/about',
   },
+  alternates: { canonical: 'https://dhanalakshmiagroproducts.com/about' },
 }
 
 export default function AboutPage() {
