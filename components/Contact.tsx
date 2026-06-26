@@ -19,7 +19,8 @@ const productOptions = [
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
 export default function Contact() {
-  const [status, setStatus] = useState<Status>('idle')
+  const [status, setStatus]   = useState<Status>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
   const [form, setForm] = useState({
     name: '', email: '', company: '', phone: '', product: '', message: '', website: '',
   })
@@ -27,15 +28,35 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (form.website) return // honeypot
+
+    // Client-side validation
+    const missing: string[] = []
+    if (!form.name.trim())    missing.push('Name')
+    if (!form.email.trim())   missing.push('Email')
+    if (!form.message.trim()) missing.push('Message')
+
+    if (missing.length) {
+      setErrorMsg(`Please fill in: ${missing.join(', ')}`)
+      setStatus('error')
+      return
+    }
+
     setStatus('loading')
+    setErrorMsg('')
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      setStatus(res.ok ? 'success' : 'error')
+      if (res.ok) {
+        setStatus('success')
+      } else {
+        setErrorMsg('Server error. Please email us directly at info@dhanalakshmiagroproducts.com')
+        setStatus('error')
+      }
     } catch {
+      setErrorMsg('Could not connect. Please email us directly at info@dhanalakshmiagroproducts.com')
       setStatus('error')
     }
   }
@@ -152,16 +173,16 @@ export default function Contact() {
                       <label className="block text-xs font-semibold text-text-dark/70 mb-1.5" htmlFor="name">Your Name *</label>
                       <input
                         id="name" name="name" type="text" required placeholder="John Smith"
-                        value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        className="form-input"
+                        value={form.name} onChange={(e) => { setForm({ ...form, name: e.target.value }); if (status === 'error') setStatus('idle') }}
+                        className={`form-input ${status === 'error' && !form.name.trim() ? 'border-red-400 bg-red-50/40' : ''}`}
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-text-dark/70 mb-1.5" htmlFor="email">Email Address *</label>
                       <input
                         id="email" name="email" type="email" required placeholder="john@company.com"
-                        value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        className="form-input"
+                        value={form.email} onChange={(e) => { setForm({ ...form, email: e.target.value }); if (status === 'error') setStatus('idle') }}
+                        className={`form-input ${status === 'error' && !form.email.trim() ? 'border-red-400 bg-red-50/40' : ''}`}
                       />
                     </div>
                     <div>
@@ -199,15 +220,15 @@ export default function Contact() {
                     <textarea
                       id="message" name="message" rows={4} required
                       placeholder="Tell us about your requirements — quantities, grades, packaging preferences..."
-                      value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      className="form-input resize-none"
+                      value={form.message} onChange={(e) => { setForm({ ...form, message: e.target.value }); if (status === 'error') setStatus('idle') }}
+                      className={`form-input resize-none ${status === 'error' && !form.message.trim() ? 'border-red-400 bg-red-50/40' : ''}`}
                     />
                   </div>
 
                   {status === 'error' && (
-                    <div className="flex items-center gap-2 text-sm text-red-600 mb-4 p-3 bg-red-50 rounded-xl">
-                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                      Something went wrong. Please email us directly.
+                    <div className="flex items-start gap-2 text-sm text-red-600 mb-4 p-3 bg-red-50 rounded-xl">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                      <span>{errorMsg || 'Something went wrong. Please email us directly.'}</span>
                     </div>
                   )}
 
