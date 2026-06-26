@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const articles = [
   {
-    title: 'Desiccated Coconut Powder vs Coconut Flour — What's the Difference?',
+    title: "Desiccated Coconut Powder vs Coconut Flour — What's the Difference?",
     excerpt: 'Buyers often confuse desiccated coconut powder with coconut flour. While both come from coconut, they are made differently, taste different, and behave differently in recipes. Here is what you need to know before placing an order.',
     category: 'Product Knowledge',
     readTime: '4 min read',
@@ -53,8 +53,8 @@ const articles = [
     slug: '#',
   },
   {
-    title: 'The Tiptur Coconut Belt — Why Karnataka Produces India's Best Coconut',
-    excerpt: 'Tiptur and the surrounding Tumkur district account for over 30% of India's desiccated coconut output. The soil, climate, and traditional farming methods behind this concentration of quality — and why it matters for buyers.',
+    title: "The Tiptur Coconut Belt — Why Karnataka Produces India's Best Coconut",
+    excerpt: "Tiptur and the surrounding Tumkur district account for over 30% of India's desiccated coconut output. The soil, climate, and traditional farming methods behind this concentration of quality — and why it matters for buyers.",
     category: 'Our Story',
     readTime: '4 min read',
     slug: '#',

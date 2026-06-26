@@ -66,7 +66,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         solid
           ? 'bg-ivory/96 backdrop-blur-2xl shadow-sm border-b border-beige/60 py-3'
-          : 'bg-transparent py-5'
+          : 'bg-ivory/80 backdrop-blur-md border-b border-beige/30 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">

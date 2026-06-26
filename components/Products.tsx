@@ -76,7 +76,7 @@ export default function Products() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px -80px 0px' }}
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
@@ -107,22 +107,19 @@ export default function Products() {
         </div>
 
         {/* Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filtered.map((p, i) => (
             <motion.div
               key={p.id}
-              layout
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: i * 0.06 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '0px 0px -60px 0px' }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
             >
               <ProductCard product={p} />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         <div className="text-center mt-12">
           <a

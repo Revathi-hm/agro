@@ -22,12 +22,12 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
-      tl.from(badgeRef.current,    { y: 24, opacity: 0, duration: 0.7 })
-        .from(titleRef.current,     { y: 60, opacity: 0, duration: 1.0 }, '-=0.4')
-        .from(subtitleRef.current,  { y: 24, opacity: 0, duration: 0.8 }, '-=0.5')
-        .from(actionsRef.current,   { y: 18, opacity: 0, duration: 0.6 }, '-=0.4')
-        .from(visualRef.current,    { x: 40, opacity: 0, duration: 1.1, ease: 'power3.out' }, '-=1.2')
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out', immediateRender: false } })
+      tl.fromTo(badgeRef.current,   { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 })
+        .fromTo(titleRef.current,    { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0 }, '-=0.4')
+        .fromTo(subtitleRef.current, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.5')
+        .fromTo(actionsRef.current,  { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.4')
+        .fromTo(visualRef.current,   { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 1.1, ease: 'power3.out' }, '-=1.2')
     })
     return () => ctx.revert()
   }, [])

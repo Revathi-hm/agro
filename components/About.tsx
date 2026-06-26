@@ -41,11 +41,13 @@ export default function About() {
     const ctx = gsap.context(() => {
       gsap.from(imgRef.current, {
         x: -60, opacity: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: imgRef.current, start: 'top 80%' },
+        immediateRender: false,
+        scrollTrigger: { trigger: imgRef.current, start: 'top 85%', toggleActions: 'play none none none' },
       })
       gsap.from(textRef.current?.children ?? [], {
         y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: textRef.current, start: 'top 80%' },
+        immediateRender: false,
+        scrollTrigger: { trigger: textRef.current, start: 'top 85%', toggleActions: 'play none none none' },
       })
     }, sectionRef)
     return () => ctx.revert()

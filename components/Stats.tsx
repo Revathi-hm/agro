@@ -1,11 +1,40 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { useInView } from 'framer-motion'
+
+function useInViewOnce(ref: React.RefObject<HTMLElement>) {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    // If already in viewport on mount, fire immediately
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -40px 0px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [ref])
+
+  return visible
+}
 
 function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0)
   const ref     = useRef<HTMLSpanElement>(null)
-  const inView  = useInView(ref, { once: true })
+  const inView  = useInViewOnce(ref as React.RefObject<HTMLElement>)
 
   useEffect(() => {
     if (!inView) return
