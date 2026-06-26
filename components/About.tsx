@@ -62,7 +62,7 @@ export default function About() {
             <div ref={imgRef} className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-card-hover" style={{ height: '420px' }}>
                 <Image
-                  src="/images/hero.jpg"
+                  src="/images/facility-main.jpg"
                   alt="Kalpa Ruchi production facility"
                   fill
                   className="object-cover"
@@ -118,7 +118,7 @@ export default function About() {
               </div>
 
               <motion.a
-                href="/#contact"
+                href="/contact"
                 whileHover={{ x: 4 }}
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-forest-dark to-forest text-white font-bold rounded-full shadow-glow-green hover:shadow-none transition-all duration-300"
               >
@@ -254,7 +254,7 @@ export default function About() {
             </div>
             <div className="flex items-center gap-3">
               <Mail className="w-5 h-5 flex-shrink-0" style={{ color: '#858367' }} strokeWidth={1.6} />
-              <a href="mailto:info@dhanalakshmiagroprodcuts.com" className="text-sm hover:text-white transition-colors" style={{ color: 'rgba(243,238,233,0.65)' }}>info@dhanalakshmiagroprodcuts.com</a>
+              <a href="mailto:info@dhanalakshmiagroproducts.com" className="text-sm hover:text-white transition-colors" style={{ color: 'rgba(243,238,233,0.65)' }}>info@dhanalakshmiagroproducts.com</a>
             </div>
           </motion.div>
         </div>

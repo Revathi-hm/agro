@@ -13,20 +13,34 @@ type GalleryItem = {
 }
 
 const galleryImages: GalleryItem[] = [
-  { src: '/images/hero.jpg',                     alt: 'Production Facility',          caption: 'Our Production Facility',   category: 'Facility',  fit: 'cover'   },
-  { src: '/images/desiccated-coconut-powder.png', alt: 'Desiccated Coconut Powder',  caption: 'Desiccated Coconut Powder', category: 'Products',  fit: 'contain' },
-  { src: '/images/coconut-flakes.png',            alt: 'Desiccated Coconut Flakes',  caption: 'Coconut Flakes',            category: 'Products',  fit: 'contain' },
-  { src: '/images/virgin-coconut-oil.jpg',        alt: 'Virgin Coconut Oil',         caption: 'Virgin Coconut Oil',        category: 'Products',  fit: 'cover'   },
-  { src: '/images/coconut-milk.png',              alt: 'Coconut Milk',               caption: 'Coconut Milk',              category: 'Products',  fit: 'contain' },
-  { src: '/images/kalparuchi-pouch.png',          alt: 'Kalpa Ruchi Packaging',      caption: 'Kalpa Ruchi Brand Range',   category: 'Packaging', fit: 'contain' },
-  { src: '/images/d-fat-coconut-powder.png',      alt: 'D-Fat Coconut Powder',       caption: 'D-Fat Coconut Powder',      category: 'Products',  fit: 'contain' },
-  { src: '/images/coconut-milk-powder.png',       alt: 'Coconut Milk Powder',        caption: 'Coconut Milk Powder',       category: 'Products',  fit: 'contain' },
-  { src: '/images/coconut-shells.png',            alt: 'Coconut Shell',              caption: 'Coconut Shell',             category: 'Products',  fit: 'contain' },
-  { src: '/images/coconut-testa.png',             alt: 'Coconut Testa',              caption: 'Coconut Testa',             category: 'Products',  fit: 'contain' },
-  { src: '/images/pouch.png',                     alt: 'Premium Packaging',          caption: 'Premium Packaging',         category: 'Packaging', fit: 'contain' },
+  // ── Facility & Production (real photos from the Tiptur plant) ──
+  { src: '/images/gallery/facility-1.jpg',        alt: 'Processing Facility',        caption: 'Our Processing Facility',       category: 'Facility',    fit: 'cover'   },
+  { src: '/images/gallery/facility-2.jpg',        alt: 'Production Line',            caption: 'Production Line',               category: 'Facility',    fit: 'cover'   },
+  { src: '/images/gallery/facility-3.jpg',        alt: 'Coconut Processing Unit',    caption: 'Coconut Processing Unit',       category: 'Facility',    fit: 'cover'   },
+  { src: '/images/gallery/facility-4.jpg',        alt: 'Plant Overview',             caption: 'Plant Overview',                category: 'Facility',    fit: 'cover'   },
+  { src: '/images/gallery/production-1.jpg',      alt: 'Production in Progress',     caption: 'Production in Progress',        category: 'Facility',    fit: 'cover'   },
+  { src: '/images/gallery/production-2.jpg',      alt: 'Quality Processing',         caption: 'Quality Processing',           category: 'Facility',    fit: 'cover'   },
+  { src: '/images/gallery/production-3.jpg',      alt: 'Drying & Milling',           caption: 'Drying & Milling Stage',        category: 'Facility',    fit: 'cover'   },
+  // ── Products ──
+  { src: '/images/desiccated-coconut-powder.png', alt: 'Desiccated Coconut Powder', caption: 'Desiccated Coconut Powder',     category: 'Products',    fit: 'contain' },
+  { src: '/images/coconut-flakes.png',            alt: 'Desiccated Coconut Flakes', caption: 'Coconut Flakes',                category: 'Products',    fit: 'contain' },
+  { src: '/images/virgin-coconut-oil.jpg',        alt: 'Virgin Coconut Oil',        caption: 'Virgin Coconut Oil',            category: 'Products',    fit: 'cover'   },
+  { src: '/images/coconut-milk.png',              alt: 'Coconut Milk',              caption: 'Coconut Milk',                  category: 'Products',    fit: 'contain' },
+  { src: '/images/d-fat-coconut-powder.png',      alt: 'D-Fat Coconut Powder',      caption: 'D-Fat Coconut Powder',          category: 'Products',    fit: 'contain' },
+  { src: '/images/coconut-milk-powder.png',       alt: 'Coconut Milk Powder',       caption: 'Coconut Milk Powder',           category: 'Products',    fit: 'contain' },
+  { src: '/images/coconut-shells.png',            alt: 'Coconut Shell',             caption: 'Coconut Shell',                 category: 'Products',    fit: 'contain' },
+  { src: '/images/coconut-testa.png',             alt: 'Coconut Testa',             caption: 'Coconut Testa',                 category: 'Products',    fit: 'contain' },
+  { src: '/images/gallery/product-shot-1.jpg',    alt: 'Product Range',             caption: 'Kalpa Ruchi Product Range',     category: 'Products',    fit: 'cover'   },
+  { src: '/images/gallery/product-shot-2.jpg',    alt: 'Products Showcase',         caption: 'Products Showcase',             category: 'Products',    fit: 'cover'   },
+  // ── Packaging ──
+  { src: '/images/kalparuchi-pouch.png',          alt: 'Kalpa Ruchi Brand',         caption: 'Kalpa Ruchi Brand Packaging',   category: 'Packaging',   fit: 'contain' },
+  { src: '/images/gallery/brand-dcp.png',         alt: 'Dhanalakshmi Brand Pack',   caption: 'Dhanalakshmi DCP Packaging',    category: 'Packaging',   fit: 'contain' },
+  { src: '/images/gallery/brand-flakes.png',      alt: 'Kalpa Ruchi Flakes Pack',   caption: 'Kalpa Ruchi Flakes Packaging',  category: 'Packaging',   fit: 'contain' },
+  { src: '/images/gallery/packaging-1.jpg',       alt: 'Export Packaging',          caption: 'Export-Ready Packaging',        category: 'Packaging',   fit: 'cover'   },
+  { src: '/images/gallery/packaging-2.png',       alt: 'Retail Packaging',          caption: 'Retail Pack Range',             category: 'Packaging',   fit: 'contain' },
 ]
 
-const categories = ['All', 'Products', 'Facility', 'Packaging']
+const categories = ['All', 'Facility', 'Products', 'Packaging']
 
 export default function GalleryGrid() {
   const [active, setActive] = useState('All')

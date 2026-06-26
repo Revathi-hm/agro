@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description: 'A five-step journey from grove to global markets — purity guaranteed.',
     url: 'https://dhanalakshmiagroproducts.com/process',
   },
+  alternates: { canonical: 'https://dhanalakshmiagroproducts.com/process' },
 }
 
 export default function ProcessPage() {
