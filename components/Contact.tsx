@@ -28,12 +28,23 @@ export default function Contact() {
     if (form.website) return // honeypot
     setStatus('loading')
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `New Enquiry from ${form.name} — ${form.product || 'General'}`,
+          from_name: 'Dhanalakshmi Agro Products Website',
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          phone: form.phone,
+          product: form.product,
+          message: form.message,
+        }),
       })
-      setStatus(res.ok ? 'success' : 'error')
+      const data = await res.json()
+      setStatus(data.success ? 'success' : 'error')
     } catch {
       setStatus('error')
     }
