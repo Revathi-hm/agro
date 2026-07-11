@@ -1,26 +1,39 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { useInView } from 'framer-motion'
 
 function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0)
   const ref     = useRef<HTMLSpanElement>(null)
-  const inView  = useInView(ref, { once: true })
+  const started = useRef(false)
 
   useEffect(() => {
-    if (!inView) return
-    const duration = 1800
-    const start    = Date.now()
-    const tick = () => {
-      const elapsed  = Date.now() - start
-      const progress = Math.min(elapsed / duration, 1)
-      const eased    = 1 - Math.pow(1 - progress, 3)
-      setCount(Math.floor(eased * target))
-      if (progress < 1) requestAnimationFrame(tick)
-      else setCount(target)
-    }
-    requestAnimationFrame(tick)
-  }, [inView, target])
+    const el = ref.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || started.current) return
+        started.current = true
+        observer.disconnect()
+
+        const duration  = 1800
+        const startTime = performance.now()
+
+        const tick = (now: number) => {
+          const elapsed  = now - startTime
+          const progress = Math.min(elapsed / duration, 1)
+          const eased    = 1 - Math.pow(1 - progress, 3)
+          setCount(Math.floor(eased * target))
+          if (progress < 1) requestAnimationFrame(tick)
+          else setCount(target)
+        }
+        requestAnimationFrame(tick)
+      },
+      { threshold: 0.1 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [target])
 
   return <span ref={ref}>{count}{suffix}</span>
 }

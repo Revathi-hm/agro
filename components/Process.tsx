@@ -1,8 +1,7 @@
 'use client'
-import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Sprout, Droplets, Thermometer, ShieldCheck, Package, ArrowRight } from 'lucide-react'
 
 const steps = [
@@ -48,15 +47,13 @@ const productShowcase = [
 ]
 
 function StepItem({ step, index }: { step: typeof steps[0]; index: number }) {
-  const ref    = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  const Icon   = step.icon
+  const Icon = step.icon
 
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="flex flex-col items-center text-center"
     >
@@ -121,58 +118,6 @@ export default function Process() {
           {/* Divider */}
           <div className="mt-16 border-t border-white/10" />
 
-          {/* Facility image strip */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="relative rounded-2xl overflow-hidden" style={{ height: 280 }}>
-                <Image
-                  src="/images/hero.jpg"
-                  alt="Dhanalakshmi Agro Products facility"
-                  fill
-                  className="object-cover"
-                  sizes="50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="text-[0.65rem] font-bold tracking-widest uppercase text-white/60">Production</span>
-                  <p className="text-white font-playfair text-lg font-bold leading-tight">Our Modern Facility</p>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="flex flex-col gap-4"
-            >
-              <div className="relative rounded-2xl overflow-hidden" style={{ height: 130 }}>
-                <Image
-                  src="/images/kalparuchi-pouch.png"
-                  alt="Kalpa Ruchi premium packaging"
-                  fill
-                  className="object-contain p-4 bg-white/5"
-                  sizes="50vw"
-                />
-                <div className="absolute inset-0 border border-white/10 rounded-2xl" />
-              </div>
-              <div className="relative rounded-2xl overflow-hidden" style={{ height: 130 }}>
-                <Image
-                  src="/images/pouch.png"
-                  alt="Premium retail packaging"
-                  fill
-                  className="object-contain p-4 bg-white/5"
-                  sizes="50vw"
-                />
-                <div className="absolute inset-0 border border-white/10 rounded-2xl" />
-              </div>
-            </motion.div>
-          </div>
         </div>
       </section>
 

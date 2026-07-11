@@ -8,11 +8,12 @@ import { Menu } from 'lucide-react'
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from '@/components/ui/sheet'
 
 const navLinks = [
-  { label: 'About',    href: '/about'    },
-  { label: 'Products', href: '/products' },
-  { label: 'Process',  href: '/process'  },
-  { label: 'Why Us',   href: '/why-us'   },
-  { label: 'Gallery',  href: '/gallery'  },
+  { label: 'About',    href: '/about'          },
+  { label: 'Products', href: '/products'       },
+  { label: 'Process',  href: '/process'        },
+  { label: 'Why Us',   href: '/why-us'         },
+  { label: 'Gallery',  href: '/gallery'        },
+  { label: 'FAQ',      href: '/faq'            },
 ]
 
 /* ─── Brand mark ─────────────────────────────────────────────────
@@ -66,7 +67,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         solid
           ? 'bg-ivory/96 backdrop-blur-2xl shadow-sm border-b border-beige/60 py-3'
-          : 'bg-transparent py-5'
+          : 'bg-ivory/80 backdrop-blur-md border-b border-beige/30 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
@@ -84,12 +85,12 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-5">
           {navLinks.map((l) => (
             <Link
               key={l.label}
               href={l.href}
-              className={`text-[0.88rem] font-semibold animated-underline transition-colors ${
+              className={`text-[0.82rem] font-semibold animated-underline transition-colors whitespace-nowrap ${
                 pathname === l.href ? 'text-forest font-bold' : 'text-text-dark hover:text-forest'
               }`}
             >
@@ -97,8 +98,8 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/#contact"
-            className="ml-4 px-5 py-2.5 bg-gradient-to-r from-forest to-olive text-white text-[0.82rem] font-bold rounded-full hover:shadow-glow-green hover:-translate-y-0.5 transition-all duration-300"
+            href="/contact"
+            className="ml-2 px-4 py-2 bg-gradient-to-r from-forest to-olive text-white text-[0.78rem] font-bold rounded-full hover:shadow-glow-green hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
           >
             Contact Us
           </Link>
@@ -133,7 +134,7 @@ export default function Navbar() {
                 ))}
                 <SheetClose asChild>
                   <Link
-                    href="/#contact"
+                    href="/contact"
                     className="mt-4 px-6 py-3 bg-gradient-to-r from-forest to-olive text-white font-bold rounded-full text-center"
                   >
                     Contact Us

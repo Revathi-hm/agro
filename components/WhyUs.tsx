@@ -1,7 +1,6 @@
 'use client'
-import { useRef } from 'react'
 import Image from 'next/image'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Leaf, ShieldCheck, FlaskConical, Package, Handshake, Headphones, Award, Globe } from 'lucide-react'
 
 const features = [
@@ -20,8 +19,6 @@ const promises = [
 ]
 
 export default function WhyUs() {
-  const cardsRef = useRef<HTMLDivElement>(null)
-  const inView   = useInView(cardsRef, { once: true, margin: '-80px' })
 
   return (
     <section id="why-us" className="pt-24 bg-gradient-to-b from-ivory via-[#F0EBE0] to-[#EAE0D5] overflow-hidden">
@@ -55,12 +52,13 @@ export default function WhyUs() {
               </div>
 
               {/* 6 feature cards 3×2 */}
-              <div ref={cardsRef} className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-3 gap-2.5">
                 {features.map(({ icon: Icon, title, desc }, i) => (
                   <motion.div
                     key={title}
                     initial={{ opacity: 0, y: 16 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.45, delay: i * 0.07 }}
                     whileHover={{ y: -3, boxShadow: '0 8px 32px rgba(47,41,19,0.10)' }}
                     className="bg-card-white/88 backdrop-blur-sm border border-white/70 rounded-xl p-3.5 cursor-default"
@@ -138,25 +136,6 @@ export default function WhyUs() {
                 <span className="text-[0.65rem] text-muted font-medium">Quality Assured</span>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* Promise strip */}
-      <div className="bg-card-white/90 border-t border-beige/40 mt-8">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-beige/50">
-            {promises.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="flex items-start gap-4 py-6 px-6">
-                <div className="w-10 h-10 bg-olive/8 border border-olive/15 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-4 h-4 text-olive" strokeWidth={1.8} />
-                </div>
-                <div>
-                  <strong className="block text-sm font-bold text-text-dark mb-1">{title}</strong>
-                  <p className="text-[0.76rem] text-muted leading-relaxed">{desc}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

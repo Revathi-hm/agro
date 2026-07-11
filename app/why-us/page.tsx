@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description: '15+ years of expertise, certified quality, exporting to 30+ countries worldwide.',
     url: 'https://dhanalakshmiagroproducts.com/why-us',
   },
+  alternates: { canonical: 'https://dhanalakshmiagroproducts.com/why-us' },
 }
 
 export default function WhyUsPage() {

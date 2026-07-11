@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     description: 'Photos of our premium coconut products and production facility.',
     url: 'https://dhanalakshmiagroproducts.com/gallery',
   },
+  alternates: { canonical: 'https://dhanalakshmiagroproducts.com/gallery' },
 }
 
 export default function GalleryPage() {
